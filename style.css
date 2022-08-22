@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+}
+.game {
+    width: 500px;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+}
+.game .chanaparh {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    background-color: #444;
+    grid-template-columns: repeat(3, 1fr);
+}
+.game .chanaparh .road1 {
+    position: relative;
+    display: grid;
+    justify-content: right;
+    animation: road 1s linear infinite forwards;
+    transform: translateY(-30px);
+}
+.game .chanaparh .road3 {
+    animation: road 1s linear infinite forwards;
+    transform: translateY(-30px);
+}
+.game .chanaparh .road .gcik {
+    width: 10px;
+    height: 40px;
+    background-color: #fff;
+    margin-top: 50px;
+    display: block;
+}
+.game .chanaparh .road .gcik:first-child { margin-top: 0; }
+@keyframes road {
+    100% {
+        transform: translateY(60px);
+    }
+}
+.game .chanaparh .crash {
+    position: absolute;
+    width: 120px;
+    height: 100px;
+    top: -100px;
+    z-index: 1;
+}
+.game .chanaparh .crash1 {
+    background: url(Img/crash1.png) no-repeat center / 94% 100%;
+}
+.game .chanaparh .crash2 {
+    background: url(Img/crash2.png) no-repeat center / 144% 158%;
+}
+.game .chanaparh .crash3 {
+    background: url(Img/crash3.png) no-repeat center / 110% 141%;
+}
+
+.game .chanaparh .car {
+    position: absolute;
+    width: 80px;
+    height: 150px;
+    bottom: 0px;
+    z-index: 2;
+    left: 203px;
+    transition: transform 1s, bottom 1s;
+}
+.game .chanaparh .car img {
+    width: 100px;
+    height: 100%;
+    transform: rotate(-90deg) scale(1.5);
+    object-fit: contain;
+    margin-left: -10px;
+}
+.displayTime {
+    position: absolute;
+    color: #000;
+    font: 2em sans-serif;
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    cursor: pointer;
+}
+.game .menu {
+    width: 100%;
+    height: 100%;
+    background: url(Img/background.jpg) center / cover;
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    transition: 1s;
+}
+.game .menu span {
+    color: #fff;
+    font: 3em sans-serif;
+    margin-top: 70px;
+    margin-right: 10px;
+    animation: span 2s calc(var(--i) * 0.2s) linear infinite;
+    text-shadow: 2px 2px 2px #000;
+}
+@keyframes span {
+    50% {
+        transform: translateY(-20px);
+    }
+}
+.game .menu span:nth-child(5) {
+    margin-right: 30px;
+}
+.game .menu .play {
+    border-radius: 20px;
+    width: 150px;
+    height: 70px;
+    border: none;
+    outline: none;
+    font: bold 2em sans-serif;
+    cursor: pointer;
+    position: absolute;
+    top: 250px;
+    box-shadow: 0 0 5px #000;
+    overflow: hidden;
+}
+.game .menu .play::before {
+    position: absolute;
+    content: 'PLAY';
+    width: 100%;
+    height: 100%;
+    background-color: green;
+    font: bold 1em sans-serif;
+    color: #fff;
+    top: 100%;
+    left: 0;
+    z-index: 0;
+    cursor: pointer;
+    padding-top: 15px;
+    transition: 0.5s;
+}
+.game .menu .play:hover::before {
+    top: 0;
+}
+.game .selectCars {
+    width: 400px;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    bottom: -150px;
+    display: flex;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+    border-radius: 20px;
+    transition: 1s;
+}
+.game .selectCars .car {
+    height: 66px;
+    object-fit: cover;
+    transform: rotate(-90deg);
+    cursor: pointer;
+}
+.game .menu .select {
+    position: absolute;
+    width: 150px;
+    top: 350px;
+    height: 80px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font: bold 1.5em sans-serif;
+    box-shadow: 0 0 5px #000;   
+    cursor: pointer;
+}
+.game .menu .select h1 {
+    font: bold 1em sans-serif;
+    transition: 0.3s;
+}
+.game .menu .select:hover h1 {
+    color: green;
+    transform: scale(1.15);
+}
+.game .displayCrash {
+    color: red;
+    text-shadow: 2px 2px 2px #000;
+    font: bold 3em sans-serif;
+    position: absolute;
+    bottom: -100%;
+    width: 100%;
+    transition: 0.5s;
+    text-align: center;
+    z-index: 14;
+    cursor: pointer;
+}
+.game .displayCrash span {
+    animation: crashSpan 1s linear infinite;
+}
+@keyframes crashSpan {
+    50% {
+        opacity: 0;
+    }
+}
+.copyRight {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font: 2em cursive;
+}
